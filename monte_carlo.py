@@ -27,7 +27,7 @@ def monte_carlo_method(x):
     return 4 * (circle_count / point_count), points
 
 def main():
-    x = 10000000
+    x = 100000
     calculated_pi, points = monte_carlo_method(x)
     
     digits = -2
@@ -38,7 +38,6 @@ def main():
             break
     print(f"{np.pi}\n{calculated_pi}\n accurate digits: {digits}")
 
-    return
     # plotting the points, green for points inside the circle, red for points outside the circle
     limit = 0
     for point in points:
