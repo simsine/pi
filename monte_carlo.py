@@ -30,7 +30,8 @@ def main():
     x = 1000000
     calculated_pi, points = monte_carlo_method(x)
     
-    digits = -2
+    # Calculate accurate digits
+    digits = -2 
     for i, j in zip(str(calculated_pi), str(np.pi)):
         if i == j:
             digits += 1
