@@ -73,7 +73,6 @@ def main():
     # limiting the view to the square
     plt.xlim(-1, 1)
     plt.ylim(-1, 1)
-    
 
     # plt.show()
     plt.savefig("test.png", dpi=100)
