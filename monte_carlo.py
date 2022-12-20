@@ -27,7 +27,7 @@ def monte_carlo_method(x):
     return 4 * (circle_count / point_count), points
 
 def main():
-    x = 100000
+    x = 1000000
     calculated_pi, points = monte_carlo_method(x)
     
     digits = -2

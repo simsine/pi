@@ -1,26 +1,44 @@
 #!/usr/bin/env python3
 
 def pi(x):
-    sum = 0
-    n = 1
+    SUM = 0
+    N = 1
     positive = True
 
     while True:
         if positive:
-            sum += 1 / n
+            SUM += 1 / N
         else:
-            sum -= 1 / n
+            SUM -= 1 / N
         
-        n += 2
+        N += 2
         positive = not positive
 
-        if n > x:
+        if N > x:
             break
     
-    return sum * 4
+    return SUM * 4
+
+def sumasjon(nedre_grense, ovre_grense, funksjon):
+    summert = 0
+    for i in range(nedre_grense, ovre_grense):
+        summert += funksjon(i)
+    return summert
 
 def main():
-    print(pi(10000000))
+    import numpy as np
+    f = lambda x: (((-1)**x) / (2 * x + 1)) * 4
+    
+    for i in range(0, 10):
+        N = 10**i
+        calculated_pi = sumasjon(0, N, f)
+        digits = -2
+        for j, k in zip(str(calculated_pi), str(np.pi)):
+            if j == k:
+                digits += 1
+            else:
+                break
+        print(f"10^{i}, {calculated_pi}, accurate digits: {digits}")
 
 if __name__ == "__main__":
     main()
