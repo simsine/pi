@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 
-from matplotlib import pyplot as plt
-import random
-import numpy as np
-
 def monte_carlo_method(x):
+    import random
+    
     points = []
     point_count = 0
     circle_count = 0
@@ -27,7 +25,27 @@ def monte_carlo_method(x):
     return 4 * (circle_count / point_count), points
 
 def main():
-    x = 1000000
+    from matplotlib import pyplot as plt
+    import numpy as np
+    
+    x_values, y_values = [], []
+
+    for i in range(2, 500):
+        i = i*10
+        calculated_pi, points = monte_carlo_method(i)
+        x_values.append(i)
+        y_values.append(calculated_pi)
+
+    plt.axhline(np.pi, color="r")
+    plt.plot(x_values, y_values)
+    plt.xlabel("N value")
+    plt.ylabel("Pi value")
+    plt.title("Monte Carlo Pi values")
+    plt.savefig("MonteCarlo_piValues.png")
+    return
+
+    x = 1000
+        # Visual representation
     calculated_pi, points = monte_carlo_method(x)
     
     # Calculate accurate digits
@@ -76,7 +94,7 @@ def main():
     plt.ylim(-1, 1)
 
     # plt.show()
-    plt.savefig("test.png", dpi=100)
+    plt.savefig("MonteCarlo_visual.png", dpi=100)
     
 if __name__ == "__main__":
     main()
